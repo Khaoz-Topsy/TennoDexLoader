@@ -1,0 +1,131 @@
+$loading-icon-color: lightgrey; //#18bfef; //rgb(227, 118, 130);
+$loading-icon-text-color: grey;
+$loading-icon-size: 200px;
+$loading-icon-square-size: 50px;
+$loading-icon-square-border-size: 20px;
+$loading-icon-inner-square-size: 20px;
+$loading-icon-arrow-size-height: 65px;
+$loading-icon-arrow-size-width: 20px;
+
+
+.full-page-loader {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.opacity80 {
+    background-color: #333333;
+    opacity: 0.8;
+}
+
+.holder {
+    position: relative;
+    display: inline-flex;
+    margin: 0 auto;
+    width: $loading-icon-size;
+}
+
+.square-outer {
+    position: absolute;
+    top: calc(50% - #{($loading-icon-square-size + ($loading-icon-square-border-size * 2))/2});
+    left: calc(50% - #{($loading-icon-square-size + ($loading-icon-square-border-size * 2))/2});
+    border: $loading-icon-square-border-size solid $loading-icon-color;
+    height: $loading-icon-square-size;
+    width: $loading-icon-square-size;
+    animation: rotate-outer 1s infinite reverse ease-in-out;
+}
+
+.square-inner {
+    position: absolute;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
+    background-color: $loading-icon-color;
+    height: $loading-icon-inner-square-size;
+    width: $loading-icon-inner-square-size;
+}
+
+.arrow-before-and-after {
+    display: inline-block;
+    height: $loading-icon-arrow-size-height;
+    width: $loading-icon-arrow-size-width;
+    position: absolute;
+    background-color: $loading-icon-color;
+}
+.arrow, .square-outer {
+  display: inline-block;
+  box-sizing: unset;
+}
+
+.arrow {
+    height:100px;
+    width: 50%;
+    position: relative;
+    &.left {
+      animation: slide-left 0.5s infinite alternate ease-in-out;
+      .top, .bottom {
+        @extend .arrow-before-and-after;
+        left: 0;
+      }
+      .top {
+        top: 1px;
+        transform: rotate(-135deg);
+      }
+      .bottom {
+        bottom: 1px;
+        transform: rotate(135deg);
+      }
+    }
+    &.right {
+        animation: slide-right 0.5s infinite alternate ease-in-out;
+      .top, .bottom {
+        @extend .arrow-before-and-after;
+        right: 0;
+      }
+      .top {
+        top: 1px;
+        transform: rotate(-45deg);
+      }
+      .bottom {
+        bottom: 1px;
+        transform: rotate(45deg);
+      }
+    }
+}
+
+@keyframes rotate-outer {
+    0% {
+        transform: rotate(45deg);
+    }
+    85% {
+        transform: rotate(135deg);
+    }
+    100% {
+        transform: rotate(135deg);
+    }
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translate(0);
+    }
+    100% {
+        transform: translate(-30px);
+    }
+}
+
+@keyframes slide-right {
+    0% {
+        transform: translate(0);
+    }
+    100% {
+        transform: translate(30px);
+    }
+}

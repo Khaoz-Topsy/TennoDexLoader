@@ -1,0 +1,118 @@
+.full-page-loader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.opacity80 {
+  background-color: #333333;
+  opacity: 0.8;
+}
+
+.holder {
+  position: relative;
+  display: inline-flex;
+  margin: 0 auto;
+  width: 200px;
+}
+
+.square-outer {
+  position: absolute;
+  top: calc(50% - 45px);
+  left: calc(50% - 45px);
+  border: 20px solid lightgrey;
+  height: 50px;
+  width: 50px;
+  animation: rotate-outer 1s infinite reverse ease-in-out;
+}
+
+.square-inner {
+  position: absolute;
+  top: calc(50% - 10px);
+  left: calc(50% - 10px);
+  background-color: lightgrey;
+  height: 20px;
+  width: 20px;
+}
+
+.arrow-before-and-after, .arrow.left .top, .arrow.left .bottom, .arrow.right .top, .arrow.right .bottom {
+  display: inline-block;
+  height: 65px;
+  width: 20px;
+  position: absolute;
+  background-color: lightgrey;
+}
+
+.arrow, .square-outer {
+  display: inline-block;
+  box-sizing: unset;
+}
+
+.arrow {
+  height: 100px;
+  width: 50%;
+  position: relative;
+}
+.arrow.left {
+  animation: slide-left 0.5s infinite alternate ease-in-out;
+}
+.arrow.left .top, .arrow.left .bottom {
+  left: 0;
+}
+.arrow.left .top {
+  top: 1px;
+  transform: rotate(-135deg);
+}
+.arrow.left .bottom {
+  bottom: 1px;
+  transform: rotate(135deg);
+}
+.arrow.right {
+  animation: slide-right 0.5s infinite alternate ease-in-out;
+}
+.arrow.right .top, .arrow.right .bottom {
+  right: 0;
+}
+.arrow.right .top {
+  top: 1px;
+  transform: rotate(-45deg);
+}
+.arrow.right .bottom {
+  bottom: 1px;
+  transform: rotate(45deg);
+}
+
+@keyframes rotate-outer {
+  0% {
+    transform: rotate(45deg);
+  }
+  85% {
+    transform: rotate(135deg);
+  }
+  100% {
+    transform: rotate(135deg);
+  }
+}
+@keyframes slide-left {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(-30px);
+  }
+}
+@keyframes slide-right {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(30px);
+  }
+}
