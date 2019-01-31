@@ -1,4 +1,4 @@
-# Warframe Loader
+# TennoDex Loader
 Just a simple loader idea that I was messing around with.
 
 Original design from https://codepen.io/JTattersfield/
